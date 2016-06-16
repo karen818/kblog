@@ -1,21 +1,20 @@
 {
-  "name": "kblog",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "blogapp",
+  "version": "0.0.0",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node ./bin/www"
   },
-  "author": "",
-  "license": "ISC",
   "dependencies": {
-    "body-parser": "^1.15.1",
-    "express": "^4.13.4",
+    "body-parser": "^1.13.3",
+    "debug": "~2.2.0",
+    "express": "~4.13.1",
     "handlebars": "^4.0.5",
+    "hbs": "^4.0.0",
     "knex": "^0.11.5",
     "locus": "^1.2.0",
     "method-override": "^2.3.6",
-    "morgan": "^1.7.0",
+    "morgan": "^1.6.1",
     "pg": "^5.1.0"
   }
 }
