@@ -3,17 +3,34 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
-    <title>kBlog</title>
+    <title>kBlog Posts</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="/stylesheets/materialize.min.css">
     <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
 <body>
-    <h1>{{title}}</h1>
+    <h1>kBlog Posts</h1>
     <h3>One blog to rule them all</h3>
-    <a href="/users" class="waves-effect waves-light btn">Users</a>
-    <a href="/posts" class="waves-effect waves-light btn">Posts</a>
+    <div class="container">
+        <div class="row">
 
+            <table class="striped bordered">
+              <thead>
+                <th data-field="userPosts">Posts</th>
+                <th data-field="username">User</th>
+              </thead>
+              <tbody>
+                  {{#each posts}}
+                  <tr>
+                    <td>{{post}} </td>
+                    <td>{{user_id}}</td>
+                  </tr>
+                  {{/each}}
+              </tbody>
+            </table>
+        </div>
+
+    </div>
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 
     <script type="text/javascript" src="/javascripts/materialize.min.js"></script>

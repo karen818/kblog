@@ -11,7 +11,7 @@ router.route("/")
 	    res.render('users/index',{users:result});
 		});
 	})
-	// //******************CREATE**********************//
+    // //******************CREATE**********************//
 	.post(function(req, res){
 		var user = req.body;
 		knex("users").insert({
@@ -25,6 +25,7 @@ router.route("/")
 
 
 
+
 router.route("/new")
 	.get(function(req, res){
 		knex('users').then(function(result,err){
@@ -34,21 +35,46 @@ router.route("/new")
 
 
 
-router.route("/edit")
-	.post(function(req, res){
-		var user = req.body;
-		knex('users').update({
-			name: user.full_name,
-			username: user.username
-		}).then(function(result, err){
-			res.redirect('/users');
-		})
-	});
+router.route("/:id/edit")
+    .get(function(req, res){
+        var userId = req.params.id;
+        knex('users').where('id', userId).first().then(function(result,err){
+        res.render("users/edit", {user: result});
+        });
+    });
 
-	// TABLE COLS
-	// table.string("full_name");
-	// table.string("username");
-	// table.text("img_url", "longtext");
+router.route('/:id')
+    .put(function(req, res){
+        var userId = req.params.id;
+        var user = req.body;
+        knex('users').where('id', userId).update({
+            full_name: user.full_name,
+            username: user.username,
+            img_url: user.img_url
+        }).then(function(result){
+            res.redirect('/users');
+        })
+    });
+
+router.route("/:id/delete")
+    .get(function(req, res){
+        var userId = req.params.id;
+        knex('users').where('id', userId).first().then(function(result,err){
+        res.render("users/delete", {user: result});
+        });
+    });
+
+router.route('/:id')
+    .delete(function(req, res){
+        var userId = req.params.id;
+        knex('users').where('id', userId).first().delete().then(function(result){
+            res.redirect('/users');
+        })
+    });
+
+
+
+
 
 
 

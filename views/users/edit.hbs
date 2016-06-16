@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+    <title>kBlog Edit</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="/stylesheets/materialize.min.css">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+<body>
+    <h3>Edit a kBlog user</h3>
+    <form action="/users/{{user.id}}?_method=PUT" method="POST">
+        <label for="fullName">Full Name</label>
+        <input id="fullName" type="text" name="full_name" value="{{user.full_name}}"><br><br>
+
+        <label for="userName">User Name</label>
+        <input id="userName" type="text" name="username" value="{{user.username}}"><br><br>
+
+        <label for="profilePic">Profile URL link</label>
+        <input id="profilePic" type="text" name="img_url" value="{{user.img_url}}"><br><br>
+
+        <button class="btn waves-effect waves-light" type="submit">Submit edits
+            <i class="material-icons left">edit</i>
+        </button>
+    </form>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+
+    <script type="text/javascript" src="/javascripts/materialize.min.js"></script>
+
+</body>
+</html>
