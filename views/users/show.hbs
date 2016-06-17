@@ -3,32 +3,25 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
-    <title>kBlog Posts</title>
+    <title>kBlog User</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="/stylesheets/materialize.min.css">
     <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
 <body>
-    <h1>kBlog Posts</h1>
+    <h1>{{user.username}}'s Posts</h1>
     <h3>One blog to rule them all</h3>
     <div class="container">
         <div class="row">
+            <img src="{{user.img_url}}" alt="" width="100px">
+            <p>
+                Name: {{user.full_name}}<br>
+                Username: {{user.username}}
+            </p>
+            {{#each posts}}
+                {{posts.post}}
+            {{/each}}
 
-            <table class="striped bordered">
-              <thead>
-                <th data-field="userPosts">Posts</th>
-                <th data-field="username">User</th>
-              </thead>
-              <tbody>
-                  {{#each posts}}
-                  <tr>
-                    <td> <span class="boldBlue">{{title}}</span> <br>
-                        {{post}}</td>
-                    <td><a href="/users/{{user_id}}/posts">{{user_id}}</a></td>
-                  </tr>
-                  {{/each}}
-              </tbody>
-            </table>
         </div>
 
     </div>

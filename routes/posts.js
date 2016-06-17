@@ -2,12 +2,26 @@ var express = require("express");
 	router = express.Router();
 	knex = require("../db/knex")
 
+    // POSTS schema
+    // table.increments().primary();
+    // table.string("title");
+    // table.text("post", "longtext");
+    // table.integer('user_id').unsigned().index().references('users.id');
+
+// var userName = knex('users')
+//   .join('posts', 'users.id', '=', 'posts.user_id')
+//   .select('posts.post', 'users.username');
+//   console.log(userName);
+
 router.route("/")
 	.get(function(req,res){
 	  knex('posts').then(function(result,err){
 	    res.render('posts/index',{posts:result});
 		});
 	});
+
+    //user from posts show page (READ)
+
 //     // //******************CREATE**********************//
 // 	.post(function(req, res){
 // 		var user = req.body;

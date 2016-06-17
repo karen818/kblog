@@ -5,6 +5,10 @@ var express = require('express'),
 	handlebars = require('handlebars'),
     methodOverride = require('method-override');
 
+    var pg = require('pg');
+
+    require('locus');
+
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var posts = require('./routes/posts');

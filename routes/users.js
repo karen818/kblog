@@ -2,16 +2,13 @@ var express = require("express");
 	router = express.Router();
 	knex = require("../db/knex")
 
+// **************CREATE******************
 router.route("/")
-	// Index
-	// All the posts
-	// .get()
 	.get(function(req,res){
 	  knex('users').then(function(result,err){
 	    res.render('users/index',{users:result});
 		});
 	})
-    // //******************CREATE**********************//
 	.post(function(req, res){
 		var user = req.body;
 		knex("users").insert({
@@ -25,7 +22,7 @@ router.route("/")
 
 
 
-
+// **************READ******************
 router.route("/new")
 	.get(function(req, res){
 		knex('users').then(function(result,err){
@@ -33,8 +30,24 @@ router.route("/new")
 		});
 	});
 
+router.route("/:id")
+	.get(function(req,res){
+      var userId = req.params.id;
+	  knex('users').where('id', userId).first().then(function(result,err){
+	    res.render('users/index',{users:result});
+		});
+	});
 
+router.route('/:id/posts')
+    .get(function(req,res){
+      var userId = req.params.id;
+      var userPosts = req.body;
+      knex('users').where('id', userId).first().then(function(result,err){
+        res.render('users/show',{users:result});
+        });
+    });
 
+// **************UPDATE******************
 router.route("/:id/edit")
     .get(function(req, res){
         var userId = req.params.id;
@@ -56,6 +69,8 @@ router.route('/:id')
         })
     });
 
+
+// **************DELETE******************
 router.route("/:id/delete")
     .get(function(req, res){
         var userId = req.params.id;
@@ -73,6 +88,21 @@ router.route('/:id')
     });
 
 
+
+    // +//author show page (READ)
+    //  +router.get('/:id', function (req, res){
+    //  +    // get id from params
+    //  +    var authorId = req.params.id;
+    //  +
+    //  +    // query db for author id
+    //  +    // .first gets the first result in the array
+    //  +    knex('authors').where('id', authorId).first().then(function(result, err){
+    //  +        var author = result;
+    //  +        //key author and value author (i.e., the result)
+    //  +        res.render('authors/show', {author: author});
+    //  +    })
+    //  +    // render show author page
+    //  +});
 
 
 
