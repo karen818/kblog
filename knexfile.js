@@ -8,10 +8,6 @@ module.exports = {
           'postgres://localhost/kblog'
     },
 
-    db.connect({
-
-    });
-
   staging: {
     client: 'postgresql',
     connection: {
