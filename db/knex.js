@@ -1,3 +1,3 @@
-var env = process.env.NODE_ENV || 'development';
+var env = process.env.DATABASE_URL || 'postgres://localhost/kblog';
 var config = require('../knexfile')[env];
 module.exports = require('knex') (config);
