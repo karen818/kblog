@@ -3,7 +3,10 @@ var express = require('express'),
     logger = require('morgan'),
     bodyParser = require('body-parser'),
 	handlebars = require('handlebars'),
-    methodOverride = require('method-override');
+    methodOverride = require('method-override'),
+    dotenv = require('dotenv').config();
+
+    dotenv.load();
 
     require('locus');
 

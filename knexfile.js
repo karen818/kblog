@@ -4,9 +4,18 @@ module.exports = {
 
     development: {
       client: 'pg',
-      connection: 'postgres://localhost/kblog',
+      connection: {
+          'postgres://localhost/kblog',
+          host: process.env.DB_HOST,
+          username: process.env.DB_USER,
+          password: process.env.DB_PASS
+      }
       debug: true
     },
+
+    db.connect({
+
+    });
 
   staging: {
     client: 'postgresql',
