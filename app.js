@@ -3,11 +3,12 @@ var express = require('express'),
     logger = require('morgan'),
     bodyParser = require('body-parser'),
 	handlebars = require('handlebars'),
-    methodOverride = require('method-override'),
-    dotenv = require('dotenv').config();
+    methodOverride = require('method-override');
+
+    require('dotenv').config();
 
 
-    require('locus');
+    // require('locus');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -61,6 +62,8 @@ app.use(function(err, req, res, next) {
     error: {}
   });
 });
+
+var port = process.env.PORT || 3000;
 
 
 module.exports = app;
