@@ -6,7 +6,6 @@ var express = require('express'),
     methodOverride = require('method-override'),
     dotenv = require('dotenv').config();
 
-    dotenv.load();
 
     require('locus');
 
