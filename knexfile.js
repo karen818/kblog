@@ -6,8 +6,6 @@ module.exports = {
       client: 'postgresql',
       connection:
           'postgres://localhost/kblog'
-
-      debug: true
     },
 
     db.connect({
